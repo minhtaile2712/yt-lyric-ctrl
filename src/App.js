@@ -21,6 +21,7 @@ function App() {
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       // controls: 0,
+      // autoplay: 1,
     },
   };
 
@@ -56,12 +57,18 @@ function App() {
       <YouTube videoId={videoId} opts={opts} onReady={_onReady} />
       <button onClick={playVideo}>Play</button>
       <button onClick={pauseVideo}>Pause</button>
-      <span>Font Size:</span>
-      <input
-        type="number"
-        onChange={(e) => setFontSize(e.target.value)}
-        value={fontSize}
-      ></input>
+      <div>
+        <span>Font Size:</span>
+        <button onClick={() => setFontSize((font) => font - 5)}>-5</button>
+        <button onClick={() => setFontSize((font) => font - 2)}>-2</button>
+        <input
+          type="number"
+          onChange={(e) => setFontSize(+e.target.value)}
+          value={fontSize}
+        ></input>
+        <button onClick={() => setFontSize((font) => font + 2)}>+2</button>
+        <button onClick={() => setFontSize((font) => font + 5)}>+5</button>
+      </div>
       <div>
         {nodes.map((node) => (
           <div data-start={node.start} onClick={seek} className="Paragraph">
