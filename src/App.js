@@ -1,6 +1,7 @@
 import "./App.css";
 import YouTube from "react-youtube";
 import { useState } from "react";
+import { transcript } from "./transcript";
 
 const conv = (s) => s.split(":").reduce((a, i) => 60 * a + +i, 0);
 
@@ -48,7 +49,7 @@ function App() {
     setVideoId(videoIdInput);
   }
 
-  const [transcriptsInput, setTranscriptsInput] = useState("");
+  const [transcriptsInput, setTranscriptsInput] = useState(transcript);
   const [transcripts, setTranscripts] = useState("");
 
   function handleOkTranscripts() {
